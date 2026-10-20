@@ -100,19 +100,19 @@ function App() {
           </svg>
           
           {/* Identity Header */}
-          <header className="absolute z-20 top-[16.69%] left-[27.19%] flex flex-col text-left font-inria leading-[1.08]">
+          <header className="absolute z-20 top-[30.69%] left-[27.19%] flex flex-col text-left font-inria leading-[1.08]">
             <span className="text-[0.79cqw] text-white/80">DEQUITO</span>
             <strong className="text-[1.24cqw] font-normal tracking-[0.02em] text-black">REYMARK</strong>
           </header>
 
           {/* Portfolio Title */}
-          <h1 className="absolute z-10 top-[23.75%] left-[26.3%] m-0 text-[#111] font-normal text-[7.7cqw] leading-[0.9] font-italiana tracking-[-0.045em] whitespace-nowrap scale-x-140 scale-y-110 origin-top-left select-none">
+          <h1 className="absolute z-10 top-[40.75%] left-[26.3%] m-0 text-[#111] font-normal text-[7.7cqw] leading-[0.9] font-italiana tracking-[-0.045em] whitespace-nowrap scale-x-140 scale-y-110 origin-top-left select-none">
             PORTFOLIO
           </h1>
 
           {/* Portrait Image */}
           <img
-            className="absolute z-20 right-[25.7%] top-[5.3%] h-[65.2%] w-auto object-contain object-bottom"
+            className="absolute z-20 right-[26.7%] top-[6%] h-[69.2%] w-auto object-contain object-bottom"
             src={portrait}
             alt="Reymark wearing sunglasses and a dark jacket"
             draggable={false}
