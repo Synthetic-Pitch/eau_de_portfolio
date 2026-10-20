@@ -109,7 +109,7 @@ function App() {
           <h1 className="absolute z-10 top-[40.75%] left-[26.3%] m-0 text-[#111] font-normal text-[7.7cqw] leading-[0.9] font-italiana tracking-[-0.045em] whitespace-nowrap scale-x-140 scale-y-110 origin-top-left select-none">
             PORTFOLIO
           </h1>
-
+          
           {/* Portrait Image */}
           <img
             className="absolute z-20 right-[26.7%] top-[6%] h-[69.2%] w-auto object-contain object-bottom"
@@ -156,7 +156,7 @@ function App() {
             <p className="m-0 font-jura font-semibold text-[1.2em] tracking-[0.04em] text-[#C0BAA6]">
               3 years progression
             </p>
-            <p className='font-jura text-[#969593]'>engineering</p>
+            <p className='font-jura text-[#969593]'>for engineering</p>
           </div>
           <img className="w-[clamp(46px,7vw,64px)] object-contain" src={windowsLogo} alt="Windows" />
         </div>
