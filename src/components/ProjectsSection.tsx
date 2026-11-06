@@ -21,7 +21,7 @@ export default function ProjectsSection() {
   };
   return (
     <section
-      className="relative flex h-dvh max-h-210 w-full justify-center bg-[#d2cec9] aspect-[1260/443]"
+      className="relative flex h-dvh max-h-210 w-full justify-center bg-[#d2cec9] aspect-[1260/443] overflow-hidden"
       aria-label="Selected projects"
     >
       <div className="relative h-full w-650 shrink-0 ">

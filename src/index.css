@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Italiana&family=Iosevka+Charon&family=Jura:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Italiana&family=Iosevka+Charon&family=Jura:wght@400;500&family=Pochaevskaya&family=Poetsen+One&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -6,6 +6,22 @@
   --font-italiana: 'Italiana', serif;
   --font-iosevka: 'Iosevka Charon', monospace;
   --font-jura: 'Jura', sans-serif;
+  --font-pochaevsk: 'Pochaevskaya', serif;
+  --font-poetsen: 'Poetsen One', sans-serif;
+}
+
+/* Lenis adds these classes while smooth scrolling is active. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 *, *::before, *::after {

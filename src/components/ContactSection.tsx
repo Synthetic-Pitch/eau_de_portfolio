@@ -1,3 +1,10 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger, SplitText } from "gsap/all";
+import { useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger,SplitText);
+
 const services = [
   {
     label: "01",
@@ -15,10 +22,59 @@ const services = [
     copy: "Community, inventory, and operations tools built for real day-to-day work.",
   },
 ];
+
 export default function ContactSection() {
+  const wording = useRef(null);
+  const number = useRef(null);
+  useGSAP(()=>{
+    const split = new SplitText(wording.current,{type:'chars'});
+    gsap.from(split.chars,{
+      rotateX:60,
+      stagger:0.06,
+      duration:.5,
+      ease:"power4.inOut",
+      scrollTrigger:{
+        trigger:wording.current,
+        start:"top bottom",
+        end:"+=300",
+      }
+    });
+
+    const tl = gsap.timeline({ repeat: -1 });
+
+    tl.to(split.chars, {
+      color: "#F2D865",
+      duration: 0.5,
+      ease: "power4.inOut",
+      stagger: 0.05,
+    }).to(split.chars, {
+      color: "#ffffff", // your original color
+      duration: 0.5,
+      ease: "power4.inOut",
+      stagger: 0.02,
+    });
+
+    // pad so one full loop = 2s
+    tl.to({}, { duration: Math.max(0, 4 - tl.duration()) });
+
+  gsap.to(number.current, {
+    keyframes: {
+      x: [0, -6, 6, -4, 4, -2, 2, 0],
+      easeEach: "none",
+    },
+    duration: 0.4,
+    repeat: -1,
+    repeatDelay: 6,
+    scrollTrigger: {
+      trigger: number.current,
+      start: "top bottom",
+    },
+  });
+  },[])
+
   return (
     <section
-      className="relative flex min-h-dvh w-full items-center bg-[#333333] px-[8%] py-24 text-[#e7dbc8]"
+      className="sticky top-0 z-10 flex h-dvh w-full items-center overflow-hidden bg-[#333333] px-[8%] py-24 text-[#e7dbc8]"
       aria-label="About and contact"
     >
       <div className="mx-auto flex w-full max-w-[1080px] flex-col gap-16">
@@ -26,7 +82,7 @@ export default function ContactSection() {
           <p className="m-0 font-inria text-[0.75rem] tracking-[0.28em] text-white/55">
             DEQUITO / REYMARK
           </p>
-          <h2 className="m-0 font-italiana text-[clamp(3rem,10vw,7.5rem)] leading-[0.9] tracking-[-0.04em] text-white">
+          <h2 ref={wording} className="m-0 font-italiana text-[clamp(3rem,10vw,7.5rem)] leading-[0.9] tracking-[-0.04em] text-white overflow-hidden">
             LET&apos;S BUILD
           </h2>
           <p className="m-0 max-w-[38rem] font-jura text-[1.05rem] leading-[1.7] text-[#c0baa6]">
@@ -34,7 +90,7 @@ export default function ContactSection() {
             stay fast, and scale without getting messy. Dashboards, public
             sites, and mobile-ready flows — from first screen to production.
           </p>
-          <p>contact no.- 09707331334</p>
+          <p>contact no.- <span ref={number} className="inline-block">09707331334</span></p>
         </header>
         <ul className="m-0 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-3">
           {services.map((item) => (

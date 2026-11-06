@@ -5,7 +5,7 @@ import fullstack from '../assets/image/fullstack.png'
 import mabangisIcon from '../assets/icons/mabangis.png'
 
 export default function HeroSection() {
-  return <section className="relative flex w-full justify-center">
+  return <section className="relative flex w-full justify-center overflow-x-hidden">
     <div className="relative isolate mx-auto w-full max-w-[2020px] aspect-[2020/804] [container-type:inline-size] text-[#353535]" aria-label="Reymark portfolio">
       <div className="absolute -z-10 inset-y-0 left-[43.87%] bg-[#e7dbc8] rounded-tl-[11%]" style={{ right: 'min(0px, calc((2020px - 100vw) / 2))' }} aria-hidden="true" />
       <svg className="absolute inset-0 -z-5 h-full w-full pointer-events-none" viewBox="0 0 2020 804" fill="none">
