@@ -91,24 +91,38 @@ export default function Techstack() {
             <div className="mt-[clamp(4rem,10vh,9rem)] font-inria text-[clamp(1.05rem,1.45vw,1.55rem)] leading-[1.45]">
               <p className="m-0">Here are some of technologies I used during my development</p>
               <p className="mt-8 mb-0">The learning curve doesn&apos;t end on present time,<br />But only to keep</p>
-              <p className="my-12 font-iosevka text-[clamp(2.2rem,3.5vw,4rem)] font-bold italic leading-none tracking-[-0.08em]">UPGRADE</p>
+              <p className="my-12 text-[clamp(2.2rem,3.5vw,4rem)] font-PoetsenOne  leading-none tracking-[2px]">UPGRADE</p>
               <p className="m-0">and Improve day by day.</p>
             </div>
           </div>
         </div>
-
-        <aside className="flex h-full w-[20dvw] min-w-[220px] shrink-0 flex-col items-center justify-center gap-[clamp(2.4rem,6vh,6rem)] bg-[#ada08e]" aria-label="Core technologies">
+        
+        <aside
+          className="grid h-full w-[20dvw] min-w-[220px] shrink-0 place-items-center bg-[#757068] py-[4%]"
+          style={{ gridTemplateRows: "repeat(4, minmax(0, 1fr))" }}
+          aria-label="Core technologies"
+        >
           {featuredStack.map((technology) => (
             <img key={technology.alt} src={technology.src} alt={technology.alt} className={`${technology.className} object-contain`} draggable={false} />
           ))}
         </aside>
 
         <div
-          className="grid h-full w-dvw min-w-[1100px] shrink-0 grid-cols-7 place-items-center bg-[#ada08e] py-[4%] pr-[2%]"
+          className="grid h-full w-dvw min-w-[1100px] shrink-0 grid-cols-7 place-items-center bg-[#757068] py-[4%] pr-[2%]"
           style={{ gridTemplateRows: "repeat(4, minmax(0, 1fr))" }}
         >
           {technologies.map(([src, alt]) => (
-            <img key={alt} src={src} alt={alt} className="h-26 w-26 object-contain transition-transform duration-300 hover:scale-110" draggable={false} />
+            <img
+              key={alt}
+              src={src}
+              alt={alt}
+              className={`${
+                alt === "PostgreSQL" || alt === "Render" || alt === "Vercel"
+                  ? "h-32 w-32"
+                  : "h-26 w-26"
+              } object-contain transition-transform duration-300 hover:scale-110`}
+              draggable={false}
+            />
           ))}
         </div>
       </div>
