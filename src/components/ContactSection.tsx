@@ -45,7 +45,7 @@ export default function ContactSection() {
         });
 
         const tl = gsap.timeline({ repeat: -1 });
-
+        
         tl.to(split.chars, {
           color: "#F2D865",
           duration: 0.5,

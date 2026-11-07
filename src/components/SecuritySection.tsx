@@ -467,7 +467,7 @@ const SecuritySection = ({ children }: SecuritySectionProps) => {
           SLIDING DOORS: ("Security", "&", "Backup")
          ========================================================================= */}
       <section className="relative z-30 w-full h-1/2 flex items-center bg-[#0b0b0b] justify-center text-9xl font-playfair goesUP pointer-events-none">
-        Security
+        <h1 className="-translate-x-80">Security</h1>
       </section>
 
       <div className="font-play text-9xl absolute z-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex pointer-events-none">
@@ -476,7 +476,7 @@ const SecuritySection = ({ children }: SecuritySectionProps) => {
       </div>
 
       <section className="relative z-30 w-full h-1/2 flex items-center bg-[#0b0b0b] justify-center text-9xl font-playwrite goesDown pointer-events-none">
-        Backup
+        <h1 className="translate-x-80">Backup</h1>
       </section>
     </div>
   );
