@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import backblaze from "../assets/image/techstack/backblaze.png";
 import claudinary from "../assets/image/techstack/claudinary.png";
@@ -53,57 +53,81 @@ export default function Techstack() {
   const wrapper = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (!wrapper.current || !content.current) return;
+  useGSAP(
+    () => {
+      if (!wrapper.current || !content.current) return;
 
-    const getDistance = () => Math.max(0, content.current!.scrollWidth - window.innerWidth);
-    const holdDistance = 400;
-    const animation = gsap.timeline({
-      defaults: { ease: "none" },
-      scrollTrigger: {
-        trigger: wrapper.current,
-        start: "top top",
-        end: () => `+=${getDistance() + holdDistance * 2}`,
-        scrub: true,
-        pin: true,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-      },
-    });
-    animation
-      .to({}, { duration: holdDistance })
-      .to(content.current, { x: () => -getDistance(), duration: getDistance() })
-      .to({}, { duration: holdDistance });
+      const getDistance = () =>
+        Math.max(0, content.current!.scrollWidth - window.innerWidth);
+      const hold = 400;
 
-    return () => animation.kill();
-  }, { scope: wrapper });
+      gsap
+        .timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            trigger: wrapper.current,
+            start: "top top",
+            end: () => `+=${getDistance() + hold * 2}`,
+            scrub: true,
+            pin: true,
+            invalidateOnRefresh: true,
+          },
+        })
+        .to({}, { duration: hold })
+        .to(content.current, { x: () => -getDistance(), duration: getDistance() })
+        .to({}, { duration: hold });
+    },
+    { scope: wrapper }
+  );
 
   return (
-    <section ref={wrapper} className="relative z-20 h-dvh w-full overflow-hidden bg-[#d2cec9] text-[#171717]" aria-label="Technology stack">
-      <div ref={content} className="flex h-full w-[200dvw] min-w-[1100px] will-change-transform">
+    <section
+      ref={wrapper}
+      className="relative z-20 h-dvh w-full overflow-hidden bg-[#d2cec9] text-[#171717]"
+      aria-label="Technology stack"
+    >
+      <div
+        ref={content}
+        className="relative flex h-full w-[200dvw] min-w-[1100px] will-change-transform"
+      >
         <div className="flex h-full w-[80dvw] min-w-[880px] shrink-0 items-center bg-[#d2cec9] px-[clamp(5rem,12vw,11rem)]">
           <div className="w-full max-w-[610px]">
             <header>
-              <h2 className="m-0 font-italiana text-[clamp(3.25rem,5.5vw,5.8rem)] leading-none text-[#424242]">TECH STACK</h2>
+              <h2 className="m-0 font-italiana text-[clamp(3.25rem,5.5vw,5.8rem)] leading-none text-[#424242]">
+                TECH STACK
+              </h2>
               <div className="mt-4 h-px w-44 bg-[#a7a39d]" />
               <div className="mt-2 h-px w-26 bg-[#a7a39d]" />
             </header>
             <div className="mt-[clamp(4rem,10vh,9rem)] font-inria text-[clamp(1.05rem,1.45vw,1.55rem)] leading-[1.45]">
               <p className="m-0">Here are some of technologies I used during my development</p>
-              <p className="mt-8 mb-0">The learning curve doesn&apos;t end on present time,<br />But only to keep</p>
-              <p className="my-12 text-[clamp(2.2rem,3.5vw,4rem)] font-PoetsenOne  leading-none tracking-[2px]">UPGRADE</p>
-              <p className="m-0">and Improve day by day.</p>
+              <p className="mt-8 mb-0">
+                For me learning has no expiration date,
+                <br />I build to
+              </p>
+              <p className="my-12 text-[clamp(2.2rem,3.5vw,4rem)] font-PoetsenOne leading-none tracking-[2px]">
+                Evolve
+              </p>
+              <p className="m-0">
+                Improve and <i className="font-poetsen text-gray-700">Explore</i>.
+              </p>
             </div>
           </div>
         </div>
-        
+
         <aside
           className="grid h-full w-[20dvw] min-w-[220px] shrink-0 place-items-center bg-[#757068] py-[4%]"
           style={{ gridTemplateRows: "repeat(4, minmax(0, 1fr))" }}
           aria-label="Core technologies"
         >
           {featuredStack.map((technology) => (
-            <img key={technology.alt} src={technology.src} alt={technology.alt} className={`${technology.className} object-contain`} draggable={false} />
+            <img
+              key={technology.alt}
+              src={technology.src}
+              alt={technology.alt}
+              className={`${technology.className} object-contain`}
+              draggable={false}
+            />
           ))}
         </aside>
 

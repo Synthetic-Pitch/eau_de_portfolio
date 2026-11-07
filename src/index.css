@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Italiana&family=Iosevka+Charon&family=Jura:wght@400;500&family=Pochaevskaya&family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Italiana&family=Iosevka+Charon&family=Jura:wght@400;500&family=Play:wght@400;700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playwrite+US+Modern:wght@100..400&family=Pochaevskaya&family=Poetsen+One&family=Pompiere&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -9,6 +9,11 @@
   --font-pochaevsk: 'Pochaevskaya', serif;
   --font-poetsen: 'Poetsen One', sans-serif;
   --font-PoetsenOne: 'Poetsen One', sans-serif;
+  --font-playfair: 'Playfair Display SC', serif;
+  --font-playwrite: 'Playwrite US Modern', cursive;
+  --font-play: 'Play', sans-serif;
+  --font-pompiere: 'Pompiere', cursive;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
 /* Lenis adds these classes while smooth scrolling is active. */
