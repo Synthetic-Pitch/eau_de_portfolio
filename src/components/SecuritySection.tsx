@@ -282,7 +282,7 @@ const SecuritySection = ({ children }: SecuritySectionProps) => {
   return (
     <div
       ref={wrapper}
-      className="relative h-dvh w-full text-white flex flex-col overflow-hidden"
+      className="relative h-dvh w-full text-white flex flex-col overflow-hidden z-40"
     >
       {/* =========================================================================
           PAGE 3: SYSTEM DESIGN PRINCIPLES (Light silver/gray #e3e4e6)

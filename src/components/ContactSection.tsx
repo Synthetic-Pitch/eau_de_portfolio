@@ -24,56 +24,66 @@ const services = [
 ];
 
 export default function ContactSection() {
-  const wording = useRef(null);
-  const number = useRef(null);
-  useGSAP(()=>{
-    const split = new SplitText(wording.current,{type:'chars'});
-    gsap.from(split.chars,{
-      rotateX:60,
-      stagger:0.06,
-      duration:.5,
-      ease:"power4.inOut",
-      scrollTrigger:{
-        trigger:wording.current,
-        start:"top bottom",
-        end:"+=300",
+  const sectionRef = useRef<HTMLElement>(null);
+  const wording = useRef<HTMLHeadingElement>(null);
+  const number = useRef<HTMLSpanElement>(null);
+
+  useGSAP(
+    () => {
+      if (wording.current) {
+        const split = new SplitText(wording.current, { type: "chars" });
+        gsap.from(split.chars, {
+          rotateX: 60,
+          stagger: 0.06,
+          duration: 0.5,
+          ease: "power4.inOut",
+          scrollTrigger: {
+            trigger: wording.current,
+            start: "top bottom",
+            end: "+=300",
+          },
+        });
+
+        const tl = gsap.timeline({ repeat: -1 });
+
+        tl.to(split.chars, {
+          color: "#F2D865",
+          duration: 0.5,
+          ease: "power4.inOut",
+          stagger: 0.05,
+        }).to(split.chars, {
+          color: "#ffffff", // your original color
+          duration: 0.5,
+          ease: "power4.inOut",
+          stagger: 0.02,
+        });
+
+        // pad so one full loop = 4s
+        tl.to({}, { duration: Math.max(0, 4 - tl.duration()) });
       }
-    });
 
-    const tl = gsap.timeline({ repeat: -1 });
-
-    tl.to(split.chars, {
-      color: "#F2D865",
-      duration: 0.5,
-      ease: "power4.inOut",
-      stagger: 0.05,
-    }).to(split.chars, {
-      color: "#ffffff", // your original color
-      duration: 0.5,
-      ease: "power4.inOut",
-      stagger: 0.02,
-    });
-
-    // pad so one full loop = 2s
-    tl.to({}, { duration: Math.max(0, 4 - tl.duration()) });
-
-  gsap.to(number.current, {
-    keyframes: {
-      x: [0, -6, 6, -4, 4, -2, 2, 0],
-      easeEach: "none",
+      if (number.current) {
+        gsap.to(number.current, {
+          keyframes: {
+            x: [0, -6, 6, -4, 4, -2, 2, 0],
+            easeEach: "none",
+          },
+          duration: 0.4,
+          repeat: -1,
+          repeatDelay: 6,
+          scrollTrigger: {
+            trigger: number.current,
+            start: "top bottom",
+          },
+        });
+      }
     },
-    duration: 0.4,
-    repeat: -1,
-    repeatDelay: 6,
-    scrollTrigger: {
-      trigger: number.current,
-      start: "top bottom",
-    },
-  });
-  },[])
+    { scope: sectionRef }
+  );
 
   return (
     <section
+      ref={sectionRef}
       className="sticky top-0 z-10 flex h-dvh w-full items-center overflow-hidden bg-[#333333] px-[8%] py-24 text-[#e7dbc8]"
       aria-label="About and contact"
     >
